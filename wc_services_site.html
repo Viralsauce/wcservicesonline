@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>W C Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        header, footer {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #00509e;
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #003f7d;
+        }
+        .container {
+            padding: 40px;
+        }
+        .services, .cart {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .product {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>W C Services</h1>
+    <p>Reliable Government Contracting Solutions</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#shop">Shop</a>
+</nav>
+
+<div class="container" id="home">
+    <div class="services">
+        <h2>About Us</h2>
+        <p><strong>DUNS:</strong> 118494831</p>
+        <p><strong>UEI:</strong> RMW5X7KLHNM5</p>
+        <p><strong>CAGE:</strong> 9MCF9</p>
+        <p>We specialize in office relocation, furniture assembly, and facility support services for government contracts. Our team is dedicated to quality, timeliness, and exceeding client expectations.</p>
+    </div>
+
+    <div class="services" id="services">
+        <h2>Core Competencies</h2>
+        <ul>
+            <li>Office furniture disassembly and reassembly</li>
+            <li>Relocation services for government and commercial clients</li>
+            <li>Furniture delivery and disposal</li>
+            <li>On-site facility support and logistics</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container" id="shop">
+    <div class="cart">
+        <h2>Shop Our Services</h2>
+        <div class="product">
+            <span>Office Relocation Package</span>
+            <button onclick="addToCart('Office Relocation Package')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Furniture Assembly Service</span>
+            <button onclick="addToCart('Furniture Assembly Service')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Disposal & Hauling</span>
+            <button onclick="addToCart('Disposal & Hauling')">Add to Cart</button>
+        </div>
+        <h3>Cart:</h3>
+        <ul id="cart-items"></ul>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 W C Services. All rights reserved.</p>
+</footer>
+
+<script>
+    let cart = [];
+
+    function addToCart(item) {
+        cart.push(item);
+        renderCart();
+    }
+
+    function renderCart() {
+        const cartList = document.getElementById('cart-items');
+        cartList.innerHTML = '';
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            cartList.appendChild(li);
+        });
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+        } else {
+            alert("Thank you for your order! We'll contact you soon.");
+            cart = [];
+            renderCart();
+        }
+    }
+</script>
+
+</body>
+</html>
